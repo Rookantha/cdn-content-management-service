@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Content {
+  _id: ID!
+  category: String!
+  description: String!
+  isPublished: Boolean!
+  tags: [String!]
+  title: String!
+}
+
+input CreateContentDto {
+  category: String!
+  description: String!
+  isPublished: Boolean! = false
+  tags: [String!]
+  title: String!
+}
+
+type Mutation {
+  createContent(input: CreateContentDto!): Content!
+  deleteContent(id: String!): Boolean!
+  updateContent(id: String!, input: UpdateContentDto!): Content!
+}
+
+type Query {
+  getAllContent: [Content!]!
+  getContentById(id: String!): Content!
+}
+
+input UpdateContentDto {
+  category: String
+  description: String
+  isPublished: Boolean
+  tags: [String!]
+  title: String
+}

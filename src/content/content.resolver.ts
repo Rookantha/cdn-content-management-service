@@ -3,6 +3,8 @@ import { ContentService } from './content.service';
 import { Content } from './schemas/content.schema';
 import { CreateContentDto } from './dto/create.content.dto';
 import { UpdateContentDto } from './dto/update.content.dto';
+import { ValidateCreateContentPipe } from './pipes/validate.create.content.pipe';
+import { ValidateUpdateContentPipe } from './pipes/validate.update.content.pipe';
 
 
 @Resolver(() => Content)
@@ -10,7 +12,7 @@ export class ContentResolver {
   constructor(private readonly contentService: ContentService) {}
 
   @Mutation(() => Content)
-  createContent(@Args('input') createContentDto: CreateContentDto) {
+  createContent(@Args('input',new ValidateCreateContentPipe()) createContentDto: CreateContentDto) {
     return this.contentService.create(createContentDto);
   }
 
@@ -25,7 +27,7 @@ export class ContentResolver {
   }
 
   @Mutation(() => Content)
-  updateContent(@Args('id') id: string, @Args('input') updateContentDto: UpdateContentDto) {
+  updateContent(@Args('id') id: string, @Args('input',new ValidateUpdateContentPipe()) updateContentDto: UpdateContentDto) {
     return this.contentService.update(id, updateContentDto);
   }
 

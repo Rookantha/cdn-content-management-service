@@ -6,6 +6,7 @@ import { Content, ContentSchema } from './schemas/content.schema';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: Content.name, schema: ContentSchema }])],
-  providers: [ContentService, ContentResolver]
+  providers: [ContentService, ContentResolver],
+  exports:[ContentService]
 })
 export class ContentModule {}

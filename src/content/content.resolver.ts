@@ -1,7 +1,8 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ContentService } from './content.service';
 import { Content } from './schemas/content.schema';
-import { CreateContentDto, UpdateContentDto } from './dto/content.dto';
+import { CreateContentDto } from './dto/create.content.dto';
+import { UpdateContentDto } from './dto/update.content.dto';
 
 
 @Resolver(() => Content)

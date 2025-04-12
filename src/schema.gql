@@ -6,17 +6,25 @@ type Content {
   _id: ID!
   category: String!
   description: String!
+  duration: Int!
   isPublished: Boolean!
+  resolution: String!
+  s3Url: String!
   tags: [String!]
   title: String!
+  videoId: String!
 }
 
 input CreateContentDto {
   category: String!
   description: String!
+  duration: Int!
   isPublished: Boolean! = false
+  resolution: String!
+  s3Url: String!
   tags: [String!]
   title: String!
+  videoId: String!
 }
 
 type Mutation {
@@ -33,7 +41,11 @@ type Query {
 input UpdateContentDto {
   category: String
   description: String
+  duration: Int
   isPublished: Boolean
+  resolution: String
+  s3Url: String
   tags: [String!]
   title: String
+  videoId: String
 }

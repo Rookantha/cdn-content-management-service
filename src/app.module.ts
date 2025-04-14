@@ -8,6 +8,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { KafkaModule } from './kafka/kafka.module';
+import { ConsulService } from './consul/consul.service';
+import { ConsulModule } from './consul/consul.module';
 
 @Module({
   imports: [
@@ -20,8 +22,9 @@ import { KafkaModule } from './kafka/kafka.module';
     }),
     ContentModule,
     KafkaModule,
+    ConsulModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ConsulService],
 })
 export class AppModule {}
